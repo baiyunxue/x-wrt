@@ -26,7 +26,8 @@ preinit_set_mac_address() {
 		addr=$(mtd_get_mac_binary_ubi "Factory" 0x4)
 		ip link set dev eth0 address "$addr"
 		ip link set dev eth1 address "$addr"
-		;;
+	        ;;
+	cmcc,xr30-emmc-ubootlayout|\
 	cmcc,rax3000m-emmc-ubootlayout)
 		addr=$(mmc_get_mac_binary factory 0x24)
 		ip link set dev eth0 address "$addr"
