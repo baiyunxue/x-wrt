@@ -162,6 +162,7 @@ platform_do_upgrade() {
 	acer,vero-w6m|\
 	arcadyan,mozart|\
 	cmcc,rax3000m-emmc-ubootlayout|\
+        cmcc,xr30-emmc-ubootlayout|\
 	glinet,gl-mt2500|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
@@ -299,6 +300,7 @@ platform_check_image() {
 		return $?
 		;;
 	cmcc,rax3000m-emmc-ubootlayout|\
+        cmcc,xr30-emmc-ubootlayout|\
 	tenbay,ms3000k|\
 	tenbay,wr3000k-gsw-emmc-nor)
 		return 0
@@ -339,6 +341,7 @@ platform_copy_config() {
 	acer,vero-w6m|\
 	arcadyan,mozart|\
 	cmcc,rax3000m-emmc-ubootlayout|\
+        cmcc,xr30-emmc-ubootlayout|\
 	glinet,gl-mt2500|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
