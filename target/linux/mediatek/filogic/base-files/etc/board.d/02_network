@@ -14,6 +14,8 @@ mediatek_setup_interfaces()
 	cmcc,rax3000m|\
 	cmcc,rax3000m-emmc-ubootlayout|\
 	cmcc,rax3000m-nand-ubootlayout|\
+        cmcc,xr30-emmc-ubootlayout|\
+	cmcc,xr30-nand-ubootlayout|\
 	konka,komi-a31|\
 	konka,komi-a31-nmbm|\
 	imou,lc-hx3001-ubootlayout|\
@@ -195,6 +197,7 @@ mediatek_setup_macs()
 	bananapi,bpi-r4)
 		wan_mac=$(macaddr_add $(cat /sys/class/net/eth0/address) 1)
 		;;
+        cmcc,xr30-emmc-ubootlayout|\
 	cmcc,rax3000m-emmc-ubootlayout)
 		wan_mac=$(mmc_get_mac_binary factory 0x2a)
 		lan_mac=$(mmc_get_mac_binary factory 0x24)
