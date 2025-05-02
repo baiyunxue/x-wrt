@@ -14,6 +14,7 @@ case "$FIRMWARE" in
 			/lib/firmware/$FIRMWARE
 		;;
 	cmcc,rax3000m-emmc-ubootlayout|\
+        cmcc,xr30-emmc-ubootlayout|\
 	ubnt,unifi-6-plus)
 		caldata_extract_mmc "factory" 0x0 0x1000
 		;;
