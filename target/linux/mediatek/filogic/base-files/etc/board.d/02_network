@@ -197,12 +197,16 @@ mediatek_setup_macs()
 	bananapi,bpi-r4)
 		wan_mac=$(macaddr_add $(cat /sys/class/net/eth0/address) 1)
 		;;
-        cmcc,xr30-emmc-ubootlayout|\
 	cmcc,rax3000m-emmc-ubootlayout)
 		wan_mac=$(mmc_get_mac_binary factory 0x2a)
 		lan_mac=$(mmc_get_mac_binary factory 0x24)
 		label_mac=$lan_mac
 		;;
+        cmcc,xr30-emmc-ubootlayout)
+ 		wan_mac=$(mmc_get_mac_binary factory 0x2a)
+ 		lan_mac=$(mmc_get_mac_binary factory 0x24)
+ 		label_mac=$lan_mac
+ 		;;
 	imou,lc-hx3001-ubootlayout)
 		lan_mac=$(mtd_get_mac_ascii u-boot-env mac)
 		[ -n "$lan_mac" ] || lan_mac=$(macaddr_add $(mtd_get_mac_binary Factory 0x4) -1)
