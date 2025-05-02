@@ -93,8 +93,10 @@ jdcloud,re-cp-03)
 		;;
 	esac
 	;;
-cmcc,xr30-emmc-ubootlayout|\
 cmcc,rax3000m-emmc-ubootlayout)
+        ubootenv_add_uci_config "/dev/mmcblk0p1" "0x0" "0x80000" "0x80000"
+        ;;
+cmcc,xr30-emmc-ubootlayout)
         ubootenv_add_uci_config "/dev/mmcblk0p1" "0x0" "0x80000" "0x80000"
         ;;
 comfast,cf-e393ax)
@@ -102,8 +104,8 @@ comfast,cf-e393ax)
 	;;
 cetron,ct3003|\
 cetron,ct3003-ubootlayout|\
-cmcc,xr30-nand-ubootlayout|\
 cmcc,rax3000m-nand-ubootlayout|\
+cmcc,xr30-nand-ubootlayout|\
 edgecore,eap111|\
 netgear,wax220|\
 zbtlink,zbt-z8102ax|\
