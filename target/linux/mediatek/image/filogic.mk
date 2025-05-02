@@ -805,25 +805,28 @@ define Device/cmcc_rax3000m-nand-ubootlayout
 endef
 TARGET_DEVICES += cmcc_rax3000m-nand-ubootlayout
 
-define Device/cmcc_xr30-emmc
+define Device/cmcc_xr30-emmc-ubootlayout
   DEVICE_VENDOR := CMCC
-  DEVICE_MODEL := XR30 (eMMC version)
-  DEVICE_DTS := mt7981b-cmcc-xr30-emmc
+  DEVICE_MODEL := XR30 eMMC (uboot layout)
+  DEVICE_DTS := mt7981b-cmcc-xr30-emmc-ubootlayout
   DEVICE_DTS_DIR := ../dts
-  DEVICE_PACKAGES := kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3 f2fsck mkf2fs
+  SUPPORTED_DEVICES += cmcc,xr30-emmc-ubootmod
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3 e2fsprogs f2fsck mkf2fs \
+	kmod-fs-ext4 tune2fs ethtool blockd blkid fdisk gdisk partx-utils
   KERNEL := kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
   KERNEL_INITRAMFS := kernel-bin | lzma | \
 	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd | pad-to 64k
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
-TARGET_DEVICES += cmcc_xr30-emmc
+TARGET_DEVICES += cmcc_xr30-emmc-ubootlayout
 
-define Device/cmcc_xr30-nand
+define Device/cmcc_xr30-nand-ubootlayout
   DEVICE_VENDOR := CMCC
-  DEVICE_MODEL := XR30 (NAND version)
-  DEVICE_DTS := mt7981b-cmcc-xr30-nand
+  DEVICE_MODEL := XR30 NAND (uboot layout)
+  DEVICE_DTS := mt7981b-cmcc-xr30-nand-ubootlayout
   DEVICE_DTS_DIR := ../dts
-  DEVICE_PACKAGES := kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3
+  SUPPORTED_DEVICES += cmcc,xr30-nand-ubootmod
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3
   UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
   PAGESIZE := 2048
@@ -837,7 +840,7 @@ define Device/cmcc_xr30-nand
   KERNEL_INITRAMFS = kernel-bin | lzma | \
 	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd
 endef
-TARGET_DEVICES += cmcc_xr30-nand
+TARGET_DEVICES += cmcc_xr30-nand-ubootlayout
 
 define Device/comfast_cf-e393ax
   DEVICE_VENDOR := COMFAST
